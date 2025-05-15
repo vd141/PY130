@@ -42,8 +42,10 @@ class TodoList:
         return_str = f'---- {self.title} ----\n'
         for todo in self._todos:
             return_str += str(todo) + '\n'
-
         return return_str
+    
+    def __len__(self):
+        return len(self._todos)
 
     @property
     def title(self):
@@ -53,6 +55,16 @@ class TodoList:
         if not isinstance(todoitem, Todo):
             raise TypeError('Argument must be a Todo object.')
         self._todos.append(todoitem)
+
+    def first(self):
+        if not self._todos:
+            raise IndexError('List is empty. First item unretrievable.')
+        return self._todos[0]
+    
+    def last(self):
+        if not self._todos:
+            raise IndexError('List is empty. Last item unretrievable.')
+        return self._todos[-1]
 
 empty_todo_list = TodoList('Nothing Doing')
 
@@ -98,7 +110,35 @@ def step_2():
     # [X] Clean room
     # [ ] Go to gym
 
-step_2()
+# step_2()
+
+def step_3():
+    print('--------------------------------- Step 3')
+    todo_list = setup()
+
+    print(len(todo_list))              # 3
+    print(len(empty_todo_list))        # 0
+
+# step_3()
+
+def step_4():
+    print('--------------------------------- Step 4')
+    todo_list = setup()
+
+    print(todo_list.first())           # [ ] Buy milk
+    print(todo_list.last())            # [ ] Go to gym
+
+    try:
+        empty_todo_list.first()
+    except IndexError:
+        print('Expected IndexError: Got it!')
+
+    try:
+        empty_todo_list.last()
+    except IndexError:
+        print('Expected IndexError: Got it!')
+
+step_4()
 
 # def test_todo():
 #     todo1 = Todo('Buy milk')
