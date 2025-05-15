@@ -39,7 +39,7 @@ class TodoList:
         self._todos = []
 
     def __str__(self):
-        return_str = '---- Today\'s Todos ----\n'
+        return_str = f'---- {self.title} ----\n'
         for todo in self._todos:
             return_str += str(todo) + '\n'
 
