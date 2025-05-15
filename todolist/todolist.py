@@ -38,6 +38,13 @@ class TodoList:
         self._title = title
         self._todos = []
 
+    def __str__(self):
+        return_str = '---- Today\'s Todos ----\n'
+        for todo in self._todos:
+            return_str += str(todo) + '\n'
+
+        return return_str
+
     @property
     def title(self):
         return self._title
@@ -79,7 +86,19 @@ def step_1():
     for todo in todo_list._todos:
         print(todo)
 
-step_1()
+# step_1()
+
+def step_2():
+    print('--------------------------------- Step 2')
+    todo_list = setup()
+
+    print(todo_list)
+    # ---- Today's Todos -----
+    # [ ] Buy milk
+    # [X] Clean room
+    # [ ] Go to gym
+
+step_2()
 
 # def test_todo():
 #     todo1 = Todo('Buy milk')
