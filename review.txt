@@ -1,0 +1,3 @@
+PY130: exercises to review
+    - step 12 of todolist: selecting todos (Add 'each' and 'select' methods to 'todoList)
+    - practice problems question 3 (challenging)

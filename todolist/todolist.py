@@ -18,19 +18,19 @@ class Todo:
         if not isinstance(complete_status, bool):
             return NotImplemented
         self._done = complete_status
-
+    
     @property
-    def task_name(self):
+    def title(self):
         return self._task_name
     
     def __str__(self):
         indicator = Todo.COMPLETE if self.done else Todo.INCOMPLETE
-        return f'[{indicator}] {self.task_name}'
+        return f'[{indicator}] {self.title}'
     
     def __eq__(self, other):
         if not isinstance(other, Todo):
             return NotImplemented
-        return ((self.task_name == other.task_name) and 
+        return ((self.title == other.title) and 
         (self.done == other.done))
     
 class TodoList:
@@ -115,6 +115,28 @@ class TodoList:
             self._todos.pop(position)
         except IndexError as e:
             raise IndexError(f'Index must be in bounds.')
+        
+    def each(self, callback):
+        for todo in self._todos:
+            callback(todo)
+
+    def select(self, callback):
+        selected = TodoList(self.title)
+        def choose(todo):
+            if callback(todo):
+                selected.add(todo)
+        self.each(choose)
+        return selected
+    
+    def find_by_title(self, search_term):
+        # takes a string as an argument and returns the first Todo object whose 
+        # title equals the argument. raise an indexerror if no matching Todos
+        # are found. if multiple matching todos are found, return just the first
+        for item in self._todos:
+            if item.title == search_term:
+                return item
+        raise IndexError('Search term not found!')
+        # self.each(lambda todo: todo._title == search_term)
 
 empty_todo_list = TodoList('Nothing Doing')
 
@@ -353,7 +375,81 @@ def step_10():
     print(todo_list)
     # ---- Today's Todos -----
 
-step_10()
+# step_10()
+
+def step_11():
+    print('--------------------------------- Step 11')
+    todo_list = setup()
+
+    todo_list.mark_all_undone()
+    print(todo_list)
+    # ---- Today's Todos -----
+    # [ ] Buy milk
+    # [ ] Clean room
+    # [ ] Go to gym
+
+    def done_if_y_in_title(todo):
+        if 'y' in todo.title:
+            todo.done = True
+
+    todo_list.each(done_if_y_in_title)
+    print(todo_list)
+    # ---- Today's Todos -----
+    # [X] Buy milk
+    # [ ] Clean room
+    # [X] Go to gym
+
+    todo_list.each(lambda todo: print('>>>', todo))
+    # >>> [X] Buy milk
+    # >>> [ ] Clean room
+    # >>> [X] Go to gym
+
+# step_11()
+
+def step_12():
+    print('--------------------------------- Step 12')
+    todo_list = setup()
+
+    def y_in_title(todo):
+        return 'y' in todo.title
+
+    print(todo_list.select(y_in_title))
+    # ---- Today's Todos -----
+    # [ ] Buy milk
+    # [ ] Go to gym
+
+    print(todo_list.select(lambda todo: todo.done))
+    # ---- Today's Todos -----
+    # [X] Clean room
+
+# step_12()
+
+def step_13():
+    print('--------------------------------- Step 13')
+    todo_list = setup()
+
+    todo_list.add(Todo('Clean room'))
+    print(todo_list)
+    # ---- Today's Todos -----
+    # [ ] Buy milk
+    # [X] Clean room
+    # [ ] Go to gym
+    # [ ] Clean room
+
+    found = todo_list.find_by_title('Go to gym')
+    print(found)
+    # [ ] Go to gym
+
+    found = todo_list.find_by_title('Clean room')
+    print(found)
+    # [X] Clean room
+
+    try:
+        todo_list.find_by_title('Feed cat')
+    except IndexError:
+        print('Expected IndexError: Got it!')
+
+step_13()
 
 # def test_todo():
 #     todo1 = Todo('Buy milk')
