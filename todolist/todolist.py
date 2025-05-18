@@ -132,11 +132,14 @@ class TodoList:
         # takes a string as an argument and returns the first Todo object whose 
         # title equals the argument. raise an indexerror if no matching Todos
         # are found. if multiple matching todos are found, return just the first
-        for item in self._todos:
-            if item.title == search_term:
-                return item
-        raise IndexError('Search term not found!')
-        # self.each(lambda todo: todo._title == search_term)
+        # for item in self._todos:
+        #     if item.title == search_term:
+        #         return item
+        try:
+            found = self.select(lambda todo: todo.title == search_term)
+            return found.todo_at(0)
+        except IndexError as e:
+            raise IndexError(f'{e}: Search term not found!')
 
 empty_todo_list = TodoList('Nothing Doing')
 
