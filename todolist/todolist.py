@@ -100,12 +100,14 @@ class TodoList:
             raise IndexError(f'{e}: Index must be in bounds.')
         
     def mark_all_done(self):
-        for task in self._todos:
-            task.done = True
+        def mark_done(todo):
+            todo.done = True
+        self.each(mark_done)
 
     def mark_all_undone(self):
-        for task in self._todos:
-            task.done = False
+        def mark_undone(todo):
+            todo.done = False
+        self.each(mark_undone)
 
     def all_done(self):
         return all([task.done for task in self._todos])
@@ -154,6 +156,13 @@ class TodoList:
         todos, returns empty todolist
         '''
         return self.select(lambda todo: not todo.done)
+    
+    def mark_done(self, title):
+        '''
+        takes a string as argument and marks the first item that matches the
+        string as done. raise an indexerror if no matching todo is found
+        '''
+        self.find_by_title(title).done = True
 
 empty_todo_list = TodoList('Nothing Doing')
 
@@ -344,7 +353,7 @@ def step_8():
     # [ ] Clean room
     # [ ] Go to gym
 
-# step_8()
+step_8()
 
 def step_9():
     print('--------------------------------- Step 9')
@@ -491,7 +500,25 @@ def step_14():
     print(undone)
     # ----- Nothing Doing -----
 
-step_14()
+# step_14()
+
+def step_15():
+    print('--------------------------------- Step 15')
+    todo_list = setup()
+
+    todo_list.mark_done('Go to gym')
+    print(todo_list)
+    # ----- Today's Todos -----
+    # [ ] Buy milk
+    # [X] Clean room
+    # [X] Go to gym
+
+    try:
+        todo_list.mark_done('Feed cat')
+    except IndexError:
+        print('Expected IndexError: Got it!')
+
+# step_15()
 
 # def test_todo():
 #     todo1 = Todo('Buy milk')
