@@ -140,6 +140,20 @@ class TodoList:
             return found.todo_at(0)
         except IndexError as e:
             raise IndexError(f'{e}: Search term not found!')
+        
+    def done_todos(self):
+        '''
+        returns selected todolist of completed todos. if there are no completed
+        todos, returns empty todolist
+        '''
+        return self.select(lambda todo: todo.done)
+
+    def undone_todos(self):
+        '''
+        returns selected todolist of incomplete todos. if there are no incomplete
+        todos, returns empty todolist
+        '''
+        return self.select(lambda todo: not todo.done)
 
 empty_todo_list = TodoList('Nothing Doing')
 
@@ -452,7 +466,32 @@ def step_13():
     except IndexError:
         print('Expected IndexError: Got it!')
 
-step_13()
+# step_13()
+
+def step_14():
+    print('--------------------------------- Step 14')
+    todo_list = setup()
+
+    done = todo_list.done_todos()
+    print(done)
+    # ----- Today's Todos -----
+    # [X] Clean room
+
+    undone = todo_list.undone_todos()
+    print(undone)
+    # ----- Today's Todos -----
+    # [ ] Buy milk
+    # [ ] Go to gym
+
+    done = empty_todo_list.done_todos()
+    print(done)
+    # ----- Nothing Doing -----
+
+    undone = empty_todo_list.undone_todos()
+    print(undone)
+    # ----- Nothing Doing -----
+
+step_14()
 
 # def test_todo():
 #     todo1 = Todo('Buy milk')
