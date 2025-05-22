@@ -31,3 +31,12 @@ file.close()
 # file.write('Third line!\n')
 # file.write('Last line!\n')
 # file.close()
+
+# newfile = open('example.txt', 'r')
+# for line in newfile:
+#     print(line)
+# newfile.close()
+
+with open('example.txt', 'r') as newfile:
+    for line in newfile:
+        print(line)

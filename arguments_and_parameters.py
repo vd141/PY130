@@ -1,73 +1,66 @@
 '''
-problem 1
+question 1
 '''
-def combine(arg1, arg2, arg3):
-    return (arg1, arg2, arg3)
+def combine(pos1, pos2, pos3):
+    return (pos1, pos2, pos3)
 
-# print(combine('1', '2', '3'))
-
-'''
-problem 2
-'''
-def multiply(factor1, factor2, /):
-    return factor1 * factor2
-
-# print(multiply(2, 7)) # 14
-# print(multiply(factor2=2, factor1=7)) # TypeError: multiply() got some positoinal
-# only arguments passed as keyword arguments
+# print(combine('hey', 'i', 'just'))
 
 '''
-problem 3
+question 2
 '''
-def describe_pet(animal_type, /, *, name=''):
-    if name:
-        print(f'{name} is a {animal_type}.')
-    else:
-        print(f'This {animal_type} has no name.')
+def multiply(pos1, pos2, /):
+    return pos1 * pos2
 
-# describe_pet('cat', 'do', name='manny')
+# print(multiply(3, 4))
 
 '''
-problem 4
+question 3
+'''
+def describe_pet(animal_type, *, name=''):
+    print(f'{name} is an {animal_type}')
+
+# describe_pet('Cuttlefish', name='Jimmy')
+
+'''
+question 4
 '''
 def calculate_average(*nums):
-    if not nums:
-        return None
-    return sum(nums) / len(nums)
+    return sum(nums) / len(nums) if nums else None
 
-# print(calculate_average(1, 2, 3, 4, 5))
-# print(calculate_average())
+# print(calculate_average(range(45, 89)))
 
 '''
-problem 5
+question 5
 '''
-def find_person(**labor):
-    for name, profession in labor.items():
-        if name == 'Antonina':
-            print(f'{name} is a {profession}')
-            return
-    print('Antonina not found.')
+def find_person(**pairs):
+    if 'Antonina' in pairs:
+        print(f'Antonina is a {pairs['Antonina']}')
+    else:
+        print('Antonina not found.')
 
-# find_person(bob='plumber', joe='aardvark',Antonina='Architect')
-
-'''
-problem 6
-'''
-def concat_strings(*all_strings, sep=' '):
-    return sep.join(all_strings)
-
-print(concat_strings('walla', 'wally', 'womash'))
+# find_person(Antonina='SWE', James='Lebron James')
 
 '''
-problem 7
+question 6
+'''
+def concat_strings(*strings, sep=' '):
+    return sep.join(strings)
+
+print(concat_strings(*'asdfaweds'))
+
+'''
+question 7
 '''
 def register(username, /, age, *, password):
-    return {'username': username, 'age': age, 'password':password}
+    return f'{username}\'s age ({age}) and password ({password}).'
+
+# print(register('danny', age=4, password='@!#$12'))
 
 '''
-problem 8
+question 8
 '''
-def print_message(level = 'INFO', *, message):
-    print(f'{level} {message}')
+def print_message(level='INFO', *, message):
+    print(level + message)
 
-print_message(message='hello')
+print_message(message='This is a shoutout.', level='PLUS: ')

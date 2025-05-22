@@ -1,59 +1,56 @@
 '''
 question 1
 '''
-# expression = (1 / n for n in range(1, 11))
-# for number in expression:
-#     print(number)
+generator = (1 / n for n in range(1, 11))
+
+# for elem in generator:
+#     print(elem)
 
 '''
 question 2
 '''
-def gen_func(top):
-    generator = (1 / n for n in range(1, top + 1))
-    for number in generator:
-        print(number)
+# def genfunc(n):
+#     return (1 / number for number in range(1, n + 1))
 
-# gen_func(10)
+# for n in genfunc(5):
+#     print(n)
+
+#  alternate solution
+def genfunc(n):
+    for number in range(1, n + 1):
+        yield 1 / number
+
+# for n in genfunc(5):
+#     print(n)
 
 '''
 question 3
 '''
-listostrings = list('qwerty')
-capitalized = (word.capitalize() for word in listostrings)
-# print(tuple(capitalized))
+listostrings = list('abdfwasdfc')
+# print(tuple((string.capitalize() for string in listostrings)))
 
 '''
 question 4
 '''
-# def gen_func(listofstrings):
-#     generator = (mini.capitalize() for mini in listofstrings)
-#     print(tuple(generator))
+def capitalize_strings(listostrings):
+    for string in listostrings:
+        yield string.capitalize()
 
-# gen_func(listostrings)
-
-def capped_strings(listostrings):
-    for word in listostrings:
-        yield word.capitalize()
-
-# print(tuple(capped_strings(listostrings)))
+# print(tuple(capitalize_strings(listostrings)))
 
 '''
 question 5
 '''
-def capped_strings_over_len5(listicle):
-    for word in listicle:
-        if len(word) >= 5:
-            yield word.capitalize()
-
-strings = ['four', 'score', 'and', 'seven', 'years', 'ago']
-# print(set(capped_strings_over_len5(strings)))
+listostrings = ['four', 'five', 'seven', 'nine', 'twenty-four']
+generated = (string.capitalize()
+             for string in listostrings
+             if len(string) >= 5)
+print(set(generated))
 
 '''
 question 6
 '''
-def capped_strings_under_len5(listicle):
-    for word in listicle:
-        if len(word) < 5:
-            yield word.capitalize()
-
-print(set(capped_strings_under_len5(strings)))
+generated = (string.capitalize()
+             for string in listostrings
+             if len(string) < 5)
+print(set(generated))
