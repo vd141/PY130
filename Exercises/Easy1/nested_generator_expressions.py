@@ -7,5 +7,10 @@ listolists = [
     [1, 6, 4],
 ]
 
-gen_list = (num for num in reduce(lambda a, b: a + b, listolists))
+# gen_list = (num for num in reduce(lambda a, b: a + b, listolists))
+# print(list(gen_list))
+
+gen_list = (number
+            for sublist in listolists
+            for number in sublist)
 print(list(gen_list))

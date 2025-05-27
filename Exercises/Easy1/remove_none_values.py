@@ -6,5 +6,7 @@ listicle = [
     'expelliarmus',
 ]
 
-newlist = list(filter(None, listicle))
+# newlist = list(filter(None, listicle))
+newlist = list(filter(lambda word: word != None, listicle))
 print(newlist)
+
