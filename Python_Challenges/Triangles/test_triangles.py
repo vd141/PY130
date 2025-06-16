@@ -1,5 +1,5 @@
 import unittest
-from triangle import Triangle
+from triangles import Triangle
 
 class TestTriangle(unittest.TestCase):
     @unittest.skip
@@ -52,32 +52,32 @@ class TestTriangle(unittest.TestCase):
         triangle = Triangle(0.4, 0.6, 0.3)
         self.assertEqual(triangle.kind, "scalene")
 
-    @unittest.skip
+    # @unittest.skip
     def test_no_size_is_illegal(self):
         with self.assertRaises(ValueError):
             Triangle(0, 0, 0)
 
-    @unittest.skip
+    # @unittest.skip
     def test_negative_size_is_illegal(self):
         with self.assertRaises(ValueError):
             Triangle(3, 4, -5)
 
-    @unittest.skip
+    # @unittest.skip
     def test_size_inequality_is_illegal(self):
         with self.assertRaises(ValueError):
             Triangle(1, 1, 3)
 
-    @unittest.skip
+    # @unittest.skip
     def test_size_inequality_is_illegal_2(self):
         with self.assertRaises(ValueError):
             Triangle(7, 3, 2)
 
-    @unittest.skip
+    # @unittest.skip
     def test_size_inequality_is_illegal_3(self):
         with self.assertRaises(ValueError):
             Triangle(10, 1, 3)
 
-    @unittest.skip
+    # @unittest.skip
     def test_size_inequality_is_illegal_4(self):
         with self.assertRaises(ValueError):
             Triangle(1, 1, 2)

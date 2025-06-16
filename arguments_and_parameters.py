@@ -28,7 +28,7 @@ question 4
 def calculate_average(*nums):
     return sum(nums) / len(nums) if nums else None
 
-# print(calculate_average(range(45, 89)))
+print(calculate_average(tuple(range(45, 89))))
 
 '''
 question 5
@@ -47,7 +47,7 @@ question 6
 def concat_strings(*strings, sep=' '):
     return sep.join(strings)
 
-print(concat_strings(*'asdfaweds'))
+# print(concat_strings(*'asdfaweds'))
 
 '''
 question 7
@@ -63,4 +63,4 @@ question 8
 def print_message(level='INFO', *, message):
     print(level + message)
 
-print_message(message='This is a shoutout.', level='PLUS: ')
+# print_message(message='This is a shoutout.', level='PLUS: ')
