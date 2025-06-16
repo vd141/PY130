@@ -1,0 +1,14 @@
+Metadata-Version: 2.4
+Name: todolist_vd141
+Version: 0.1.0
+Summary: A fantastic todo list application.
+Author-email: Victor D <victor.dinh141@gmail.com>
+Project-URL: Homepage, https://github.com/vd141/todolist
+Project-URL: Issues, https://github.com/vd141/todolist/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: license-file

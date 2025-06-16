@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/todolist_vd141/__init__.py
+src/todolist_vd141/todo.py
+src/todolist_vd141/todolist.py
+src/todolist_vd141.egg-info/PKG-INFO
+src/todolist_vd141.egg-info/SOURCES.txt
+src/todolist_vd141.egg-info/dependency_links.txt
+src/todolist_vd141.egg-info/top_level.txt

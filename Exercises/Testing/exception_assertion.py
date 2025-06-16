@@ -1,3 +1,3 @@
 import unittest
 
-with assertionError(NoExperienceExxor)
+with assertionError(NoExperienceError)
