@@ -2,52 +2,52 @@ import unittest
 from triangles import Triangle
 
 class TestTriangle(unittest.TestCase):
-    @unittest.skip
+    # @unittest.skip
     def test_equilateral_equal_sides(self):
         triangle = Triangle(2, 2, 2)
         self.assertEqual(triangle.kind, "equilateral")
 
-    @unittest.skip
+    # @unittest.skip
     def test_larger_equilateral_equal_sides(self):
         triangle = Triangle(10, 10, 10)
         self.assertEqual(triangle.kind, "equilateral")
 
-    @unittest.skip
+    # @unittest.skip
     def test_isosceles_last_two_sides_equal(self):
         triangle = Triangle(3, 4, 4)
         self.assertEqual(triangle.kind, "isosceles")
 
-    @unittest.skip
+    # @unittest.skip
     def test_isosceles_first_last_sides_equal(self):
         triangle = Triangle(4, 3, 4)
         self.assertEqual(triangle.kind, "isosceles")
 
-    @unittest.skip
+    # @unittest.skip
     def test_isosceles_first_two_sides_equal(self):
         triangle = Triangle(4, 4, 3)
         self.assertEqual(triangle.kind, "isosceles")
 
-    @unittest.skip
+    # @unittest.skip
     def test_isosceles_exactly_two_sides_equal(self):
         triangle = Triangle(10, 10, 2)
         self.assertEqual(triangle.kind, "isosceles")
 
-    @unittest.skip
+    # @unittest.skip
     def test_scalene_no_equal_sides(self):
         triangle = Triangle(3, 4, 5)
         self.assertEqual(triangle.kind, "scalene")
 
-    @unittest.skip
+    # @unittest.skip
     def test_scalene_larger_no_equal_sides(self):
         triangle = Triangle(10, 11, 12)
         self.assertEqual(triangle.kind, "scalene")
 
-    @unittest.skip
+    # @unittest.skip
     def test_scalene_no_equal_sides_descending(self):
         triangle = Triangle(5, 4, 2)
         self.assertEqual(triangle.kind, "scalene")
 
-    @unittest.skip
+    # @unittest.skip
     def test_small_triangles_are_legal(self):
         triangle = Triangle(0.4, 0.6, 0.3)
         self.assertEqual(triangle.kind, "scalene")

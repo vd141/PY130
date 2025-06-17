@@ -26,18 +26,25 @@ class Triangle:
         self._sides = {side1, side2, side3}
         if not self._is_valid():
             raise ValueError
-        self._determine_type()
+        self._determine_kind()
 
     def _is_valid(self):
         if any(side <= 0 for side in self._sides):
             return False
-        for side in self._sides:
-            if side > sum(self._sides - {side}):
+        sides_list = [self._side1, self._side2, self._side3]
+        for side in sides_list:
+            if side >= sum(sides_list) - side:
                 return False
         return True
     
-    def _determine_type(self):
+    def _determine_kind(self):
         if len(self._sides) == 1:
             self._kind = 'equilateral'
         if len(self._sides) == 2:
             self._kind = 'isosceles'
+        if len(self._sides) == 3:
+            self._kind = 'scalene'
+
+    @property
+    def kind(self):
+        return self._kind
