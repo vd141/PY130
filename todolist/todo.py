@@ -18,11 +18,10 @@ class Todo:
         return f'[{marker}] {self.title}'
     
     def __eq__(self, other):
-        if not isinstance(other,Todo):
-            raise NotImplementedError
+        if isinstance(other,Todo):
+            return other.title == self.title and other.done == self.done
         
-        return (True if (other.title == self.title and other.done == self.done)
-                else False)
+        return NotImplemented
 
     @property
     def title(self):
