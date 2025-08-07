@@ -1,0 +1,3 @@
+'''
+lambda function practice problems
+'''
