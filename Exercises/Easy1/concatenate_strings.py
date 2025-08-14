@@ -1,5 +1,14 @@
-from lengths_of_strings import words
+# use reduce to concatenate a list of strings into a single string
 from functools import reduce
 
-new_list = reduce(lambda a, b: a + b, words)
-print(new_list)
+words = [
+    'abe',
+    'barnus',
+    'pottery',
+    'flume',
+    'hundreds',
+    'poultry',
+    'limerance',
+    'loquacious',
+]
+

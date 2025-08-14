@@ -7,10 +7,8 @@ listolists = [
     [1, 6, 4],
 ]
 
-# gen_list = (num for num in reduce(lambda a, b: a + b, listolists))
-# print(list(gen_list))
-
-gen_list = (number
+# loop through each nested list and add it to a new list
+new_list = (num
             for sublist in listolists
-            for number in sublist)
-print(list(gen_list))
+            for num in sublist)
+print(list(new_list))
