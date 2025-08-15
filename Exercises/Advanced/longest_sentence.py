@@ -1,3 +1,17 @@
+# Write a program that prints the longest sentence in a string based on the 
+# number of words. You should also print the number of words in the longest 
+# sentence.
+
+# Sentences may end with periods (.), exclamation points (!), or question marks 
+# (?). You should treat any sequence of characters that are not spaces or 
+# sentence-ending characters as a word. Thus, -- should count as a word. Log the 
+# longest sentence and its word count. Pay attention to the expected output, and 
+# be sure you preserve the punctuation from the end of the sentence.
+
+# Note that this problem is about manipulating and processing strings. As such, 
+# every detail about the string matters (e.g., case, punctuation, tabs, 
+# spaces, etc.).
+
 long_text = (
     'Four score and seven years ago our fathers brought forth on this '
     'continent a new nation, conceived in liberty, and dedicated to the '
@@ -27,39 +41,11 @@ longer_text = long_text + (
     'shall not perish from the earth.'
 )
 
-SENTENCE_SEPARATORS = ['.', '?', '!']
-WORD_SEPARATORS = [' ', ',']
-ALPHABET = 'abcdefghijklmnopqrstuvwxyz' + 'abcdefghijklmnopqrstuvwxyz'.upper() + '-'
+PUNCTUATION = {'.', '!', '?'}
 
 def longest_sentence(text):
-    max_length = 0
-    sentence_length = 0
-    longest_sentence = ''
-    '''
-    sentences start with a capital letter
-    sentences end in '.', '!', '?'
-    words come after a space or the beginning of a string
-    words come before a space or punctuation (commas are included in words)
-    '''
-    sentence = ''
-    prev_char = ''
-    for char in text:
-        sentence += char
-        if (((char in WORD_SEPARATORS) or (char in SENTENCE_SEPARATORS))
-        and prev_char in ALPHABET):
-            sentence_length += 1
-            if sentence_length > max_length:
-                max_length = sentence_length
-                longest_sentence = sentence
-        if char in SENTENCE_SEPARATORS:
-            sentence_length = 0
-            sentence = ''
-        prev_char = char
+    pass
 
-    print(longest_sentence)
-    print()
-    print(f'The longest sentence has {max_length} words.')
-    print('..')
 
 longest_sentence(long_text)
 # Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in liberty, and dedicated to the proposition that all men are created equal.
