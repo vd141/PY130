@@ -7,8 +7,5 @@ listolists = [
     [1, 6, 4],
 ]
 
-# loop through each nested list and add it to a new list
-new_list = (num
-            for sublist in listolists
-            for num in sublist)
-print(list(new_list))
+# loop through each nested list and add it to a new list to create a flat list
+# of numbers

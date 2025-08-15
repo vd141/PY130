@@ -1,6 +1,3 @@
-# use reduce to concatenate a list of strings into a single string
-from functools import reduce
-
 words = [
     'abe',
     'barnus',
@@ -12,3 +9,4 @@ words = [
     'loquacious',
 ]
 
+# use reduce to concatenate a list of strings into a single string
