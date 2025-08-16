@@ -41,40 +41,18 @@ longer_text = long_text + (
     'shall not perish from the earth.'
 )
 
-# store each sentence in a dictionary with the sentence as the key and the word count as the value
-# not necessarily space efficient, so i could use two varibles to store the longest sentence and its word count
-# if there is a longer sentence, update the longest sentence and its word count
-
-# detect a word
-# if a letter follows no character, it is at the start of a sentence
-# if a letter follows a space preceded by punctuation, it is at the start of a sentence
-# if a letter is followed by a space or by punctuation, it is at the end of a sentence
-# words in a sentence are split by spaces
-# sentences are split by punctuation
-# first, split the paragraph by punctuation
-# then, split each sentence by white space
-# count the length of each sentence
-# use regular expressions
-
 import re
 
-# detect a sentence
-PUNCTUATION = r'[!.?]+'
+def longest_sentence(paragraph):
+    # split paragraph into sentences using re.findall()
+    # split sentences into words
+    # find the longest sentence by word count
+    # print both the sentence and its word count
 
-def longest_sentence(text):
-
-    # split text into sentences
-    sentences = re.split(PUNCTUATION, text)
-    max_sentence = ""
-    max_count = 0
-    for sentence in sentences:
-        chopped_sentence = sentence.split()
-        if len(chopped_sentence) > max_count:
-            max_sentence = sentence
-            max_count = len(chopped_sentence)
-
-    print(max_sentence)
-    print(f'The longest sentence has {max_count} words.')
+    sentences = re.findall(r'[^?.!]+?[?.!]', paragraph)
+    longest_sent = max(sentences, key=lambda s: len(s.split()))
+    print(longest_sent)
+    print(f'The longest sentence has {len(longest_sent.split())} words.')
 
 
 longest_sentence(long_text)
