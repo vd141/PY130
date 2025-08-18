@@ -8,3 +8,4 @@ src/todolist_vd141.egg-info/PKG-INFO
 src/todolist_vd141.egg-info/SOURCES.txt
 src/todolist_vd141.egg-info/dependency_links.txt
 src/todolist_vd141.egg-info/top_level.txt
+tests/test_todolist.py
