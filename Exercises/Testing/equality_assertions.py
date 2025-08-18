@@ -1,8 +1,9 @@
 import unittest
 
-class XyzTest(unittest.TestCase):
-    def test_lower(self):
-        self.assertEqual('word'.lower(), 'xyz')
+class EqualityTest(unittest.TestCase):
+    def test_equality(self):
+        value = 'XyZ'
+        self.assertEqual('xyz', value.lower())
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

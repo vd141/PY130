@@ -2,7 +2,8 @@ import unittest
 
 class NoneTest(unittest.TestCase):
     def test_none(self):
-        self.assertEqual(None, None)
+        value = None
+        self.assertIsNone(value)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
