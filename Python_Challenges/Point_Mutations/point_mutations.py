@@ -14,16 +14,13 @@ the hamming distance
 class DNA:
     def __init__(self, strand):
         self._strand = strand
-    
+
     def hamming_distance(self, other_strand):
-        hamming= 0
-        shorter = (self._strand 
-                   if len(self._strand) <= len(other_strand )
-                   else other_strand)
-        longer = (self._strand 
-                   if len(self._strand) > len(other_strand )
-                   else other_strand)
-        for index, nucleotide in enumerate(shorter):
-            if nucleotide != longer[index]:
-                hamming += 1
-        return hamming
+        # find the len of the shorter strand
+        # loop over both strands and add a difference to a variable called diff
+        # count
+        hamming_distance = 0
+        loop_size = min(len(self._strand), len(other_strand))
+        for i in range(loop_size):
+            hamming_distance += 1 if self._strand[i] != other_strand[i] else 0
+        return hamming_distance
