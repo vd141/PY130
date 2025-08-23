@@ -7,28 +7,24 @@ For example, given the word "listen" and a list of candidates like "enlists",
 "inlets". Please read the test suite for the exact rules of anagrams.
 '''
 
-class Anagram():
-    def __init__(self, word=''):
-        self._base_word = word
+'''
+an anagram contains the same number of letters as the original. it cannot be
+equal to the original
 
-    def match(self, words_list):
-        # returns a sublist of valid anagrams from other
-        # if there are no valid anagrams in other, return an empty list
-        # identical words are not allowed
-        return [word for word in words_list if self._is_anagram(word) and
-                word.casefold() != self._base_word.casefold()]
+one way to compare two strings is to sort both alphabetically and casefold 
+(case doesn't matter). then compare the sorted strings
+'''
 
-    def _is_anagram(self, other):
-        # a word is an anagram if it can be made from the exact same letters
-        # of the base word
-        # all letters are compared on a casefold() basis
-        # store letters and count into a hashmap. compare hashmaps. if hashmaps
-        # are equal, the other letter is a valid anagram
-        return Anagram.hashmap_word(self._base_word) == Anagram.hashmap_word(other)
+class Anagram:
+    def __init__(self, base_word):
+        self._base_word = base_word
+    
+    def match(self, list_of_anagrams):
+        result = []
+        for word in list_of_anagrams:
+            if ((sorted(word.casefold()) == sorted(self._base_word.casefold())) 
+                and (word.casefold() != self._base_word.casefold())):
+                result.append(word)
+        return result
 
-    @staticmethod
-    def hashmap_word(word):
-        word_hashmap = {}
-        for letter in word:
-            word_hashmap[letter.casefold()] = word_hashmap.get(letter.casefold(), 0) + 1
-        return word_hashmap
+

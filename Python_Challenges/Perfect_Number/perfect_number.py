@@ -6,29 +6,19 @@
 # deficient number: a number that is greater than the sum of its proper divisors
 
 class PerfectNumber():
-    def __init__(self):
-        pass
-
-    # classify is a public method that does not take negative numbers
-    # if a negative number is passed, it raises a ValueError message
-    # that says: "Input must be a positive integer"
-
     @classmethod
-    def classify(number):
-        if number <= 0:
+    def classify(cls, target):
+        if target > 0:
+            factors = [potential_factor for potential_factor in range(1, target)
+                       if target % potential_factor == 0]
+            sum_factors = sum(factors)
+            match sum_factors:
+                case _ if sum_factors < target:
+                    return 'deficient'
+                case _ if sum_factors == target:
+                    return 'perfect'
+                case _ if sum_factors > target:
+                    return 'abundant'
+        else:
             raise ValueError('Input must be a positive integer')
-        aliquot_sum = sum(PerfectNumber._get_factors(number))
 
-        match aliquot_sum:
-            case _ if aliquot_sum < number:
-                return 'deficient'
-            case _ if aliquot_sum > number:
-                return 'abundant'
-            case _ if aliquot_sum == number:
-                return 'perfect'
-
-    def _get_factors(number):
-        # loop through all numbers from 1 to number and add number to factors list
-        # if the number is divisible by the factor
-
-        return [factor for factor in range(1, number) if number % factor == 0]
