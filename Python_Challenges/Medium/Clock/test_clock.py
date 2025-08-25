@@ -9,11 +9,11 @@ class ClockTest(unittest.TestCase):
     # @unittest.skip
     def test_past_the_hour(self):
         self.assertEqual('11:09', str(Clock.at(11, 9)))
-    @unittest.skip
+    # @unittest.skip
     def test_add_a_few_minutes(self):
         clock = Clock.at(10) + 3
         self.assertEqual('10:03', str(clock))
-    @unittest.skip
+    # @unittest.skip
     def test_adding_does_not_mutate(self):
         old_clock = Clock.at(10)
         new_clock = old_clock + 3
@@ -27,15 +27,15 @@ class ClockTest(unittest.TestCase):
         old_clock = Clock.at(10)
         new_clock = old_clock - 50
         self.assertIsNot(new_clock, old_clock)
-    @unittest.skip
+    # @unittest.skip
     def test_add_over_an_hour(self):
         clock = Clock.at(10) + 61
         self.assertEqual('11:01', str(clock))
-    @unittest.skip
+    # @unittest.skip
     def test_wrap_around_at_midnight(self):
         clock = Clock.at(23, 30) + 60
         self.assertEqual('00:30', str(clock))
-    @unittest.skip
+    # @unittest.skip
     def test_add_more_than_a_day(self):
         clock = Clock.at(10) + 3061
         self.assertEqual('13:01', str(clock))

@@ -44,3 +44,31 @@ class Clock:
     def __eq__(self, other):
         return (self._hours == other._hours and self._minutes == other._minutes)
     
+    def __add__(self, minutes):
+        # self. has hours and minutes
+        # given minutes to add, add to current minutes value
+        # if sum of minutes is greater than 60, divmod sum by 60.
+        # get floor value
+        #   if floor value + sum is greater than 24, get the result of sum % 24
+        #   and make that the sum
+        # add the remainder (result of modulo - 2nd output) to the minutes
+        sum_minutes = self._minutes + minutes
+        sum_hours = self._hours
+        if sum_minutes > 60:
+            hours, sum_minutes = divmod(sum_minutes, 60)
+            sum_hours = hours + self._hours
+            if sum_hours >= 24 and sum_minutes >= 0:
+                sum_hours = sum_hours % 24
+        return self.__class__.at(sum_hours, sum_minutes)
+
+    def __sub__(self, minutes):
+        # given minutes, subtract from instance's minutes
+        # if the result is negative, divmod the result by 60 to get the new hour
+        # and new minutes
+        # add the new hour to the current hour
+        # if the result is negative, mod the result by 24 to get the true hour
+        minute_result = self._minutes - minutes
+        if minute_result < 0:
+            new_hour, new_minutes = divmod(minute_result, 60)
+            
+        pass
