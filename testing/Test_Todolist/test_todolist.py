@@ -116,6 +116,5 @@ class TestTodoList(unittest.TestCase):
         expected_todolist.add(self.todo2)
         self.assertEqual(str(expected_todolist), str(new_todolist))
 
-    
 if __name__ == "__main__":
     unittest.main()

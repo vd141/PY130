@@ -15,5 +15,42 @@ The bottom half has the letters in descending order.
 The four corners (containing the spaces) are triangles.
 '''
 
+'''
+Diamond has one class method make_diamond()
+
+it takes a letter as input and makes a diamond out of the letters
+
+for A:
+A
+
+for B:
+ A 
+B B
+ A
+
+for C:
+  A  
+ B B 
+C   C
+ B B 
+  A
+
+for D
+   A   
+  B B  
+ C   C 
+D     D
+ C   C 
+  B B  
+   A   
+
+width of the diamond is twice the position of the target letter minus 1
+
+could use an dict to store letter/position, or use the ASCII alphabet (each char
+already has a position associated)
+
+
+'''
+
 class Diamond:
     pass
