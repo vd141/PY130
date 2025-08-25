@@ -35,7 +35,7 @@ class Clock:
         if len(time) == 2:
             return_me._hours, return_me._minutes = time
         if len(time) == 1:
-            return_me._hours, return_me._minutes = time, 0
+            return_me._hours, return_me._minutes = *time, 0
         return return_me
 
     def __str__(self):
