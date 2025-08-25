@@ -25,16 +25,22 @@ has a __sub__ method that subtracts minute sto current clock time (input is int)
 '''
 
 class Clock:
+    def __init__(self):
+        self._hours = None
+        self._minutes = None
+    
     @classmethod
     def at(cls, *time):
+        return_me = cls()
         if len(time) == 2:
-            cls._hours, cls._minutes = time
+            return_me._hours, return_me._minutes = time
         if len(time) == 1:
-            cls._hours = time, cls._minutes = 0
+            return_me._hours, return_me._minutes = time, 0
+        return return_me
 
-    def __str__(cls):
-        return f'{cls._hours:02.0f}:{cls._minutes:02.0f}'
+    def __str__(self):
+        return f'{self._hours:02.0f}:{self._minutes:02.0f}'
 
-    def __eq__(cls, other):
+    def __eq__(self, other):
         return (self._hours == other._hours and self._minutes == other._minutes)
     
