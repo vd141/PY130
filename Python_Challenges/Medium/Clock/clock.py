@@ -68,7 +68,11 @@ class Clock:
         # add the new hour to the current hour
         # if the result is negative, mod the result by 24 to get the true hour
         minute_result = self._minutes - minutes
+        new_hour = self._hours
         if minute_result < 0:
             new_hour, new_minutes = divmod(minute_result, 60)
-            
-        pass
+            new_hour = new_hour + self._hours
+            if new_hour < 0:
+                new_hour = new_hour % 24
+            minute_result = new_minutes
+        return self.__class__.at(new_hour, minute_result)
