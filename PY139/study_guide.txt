@@ -1,0 +1,31 @@
+PY139 Study Guide - first pass
+- [ ] First class functions:
+- Functions that can be stored in a variable, used as arguments to another function, and returned from a function
+
+- [ ] Higher-order functions:
+- Functions that return a function
+
+- [ ] Generator expressions
+- Can be created using comprehensions
+- Single use
+- Can yield values using yield expression
+    - Upon yielding a value, the execution of the generator expression/function is paused
+
+- [ ] Lambda functions
+- Anonymous first class functions
+- Cannot assign variables but can return simple statements
+
+- [ ] File handling
+- Using the open() function, must specify the file mode (r, w)
+- Open function returns a file stream object
+- 3 ways to read from a file stream object
+    - Readline method
+        - ??
+    - Readlines method
+        - Returns a list of sentences from the object
+    - ??
+- File stream object must be closed when finished with
+    - Using close method??
+- Or use a ‘with’ block
+    - With file stream object:
+        - Do things. Once block finishes executing, block ends
